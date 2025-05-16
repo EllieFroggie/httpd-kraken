@@ -228,7 +228,7 @@ RUN set -eux; \
 # https://httpd.apache.org/docs/2.4/stopping.html#gracefulstop
 STOPSIGNAL SIGWINCH
 
-RUN apk add curl
+RUN apk add curl jq;
 
 COPY ./httpd/httpd-foreground /usr/local/bin/
 COPY ./cron.sh /opt/data/cron.sh

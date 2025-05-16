@@ -15,3 +15,11 @@ curl -sL "https://api.kraken.com/0/public/Ticker?pair=ETHCAD" -H 'Accept: applic
 
 curl -sL "https://api.kraken.com/0/public/Ticker?pair=SOLUSD" -H 'Accept: application/json' > $DIR/SOLUSD 
 curl -sL "https://api.kraken.com/0/public/Ticker?pair=SOLCAD" -H 'Accept: application/json' > $DIR/SOLCAD
+
+
+# Export CSV format to htdocs/csv/
+printf '"SOLUSD",' > $DIR/csv/SOLUSD && cat $DIR/SOLUSD | jq -r '.result[] | [.a[0], .b[0], .c[0], .v[0], .p[0], .t[0], .l[0], .h[0], .o]' >> $DIR/csv/SOLUSD
+printf '"ETHUSD",' > $DIR/csv/ETHUSD && cat $DIR/ETHUSD | jq -r '.result[] | [.a[0], .b[0], .c[0], .v[0], .p[0], .t[0], .l[0], .h[0], .o]' >> $DIR/csv/ETHUSD
+printf '"BTCUSD",' > $DIR/csv/BTCUSD && cat $DIR/BTCUSD | jq -r '.result[] | [.a[0], .b[0], .c[0], .v[0], .p[0], .t[0], .l[0], .h[0], .o] ' >> $DIR/csv/BTCUSD
+printf '"XMRUSD",' > $DIR/csv/XMRUSD && cat $DIR/XMRUSD | jq -r '.result[] | [.a[0], .b[0], .c[0], .v[0], .p[0], .t[0], .l[0], .h[0], .o] ' >> $DIR/csvXMRUSD
+printf '"USDCAD",' > $DIR/csv/USDCAD && cat $DIR/USDCAD | jq -r '.result[] | [.a[0], .b[0], .c[0], .v[0], .p[0], .t[0], .l[0], .h[0], .o] ' >> $DIR/csv/USDCAD
